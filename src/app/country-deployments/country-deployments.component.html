@@ -1,0 +1,25 @@
+<section class="container">
+<table class="table" id="tblCountryDeployoments" aria-describedby="List of Deployments by Country">
+    <thead>
+        <tr>
+            <th>View</th>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Total Deployments</th>
+            <th>Total Units Deployed</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let deployment of deployments">
+            <td><a [routerLink]="['/country-deployment-details',deployment.countryId]">View</a></td>
+            <td>{{ deployment.name}}</td>
+            <td>{{ deployment.status}}</td>
+            <td>{{ deployment.numOfDeployments}}</td>
+            <td>{{ deployment.totalQty}}</td>
+
+
+        </tr>
+    </tbody>
+</table>
+</section>
+

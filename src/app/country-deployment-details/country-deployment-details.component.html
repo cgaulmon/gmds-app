@@ -1,0 +1,44 @@
+<section class="container" *ngIf="country">
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">Home</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div class="offset-md-3 col-5">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title"> {{country.name}} </div>
+                </div>
+                <div class="card-body">
+                    <img [src]="['/assets/maps/'+country.mapLink]" [alt]="country.name" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="my-2 container" *ngIf="details">
+    <table class="table" aria-describedby="List of Unit Deployment Details">
+        <thead>
+            <th>Graphic</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Qty</th>
+
+        </thead>
+        <tbody>
+            <tr *ngFor="let unit of details">
+                <td>
+                    <app-icon-link [name]="unit.iconLink" [altText]="unit.unitName"></app-icon-link>
+                </td>
+                <td>{{ unit.unitName}}</td>
+                <td>{{ unit.unitType}}</td>
+                <td> {{ unit.deployedQty}}</td>
+            </tr>
+        </tbody>
+    </table>
+</section>

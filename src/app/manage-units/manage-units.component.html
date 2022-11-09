@@ -1,0 +1,44 @@
+<section class="container">
+    <table class="table" aria-describedby="Manage Unit Status" id="tblManageUnits">
+        <thead>
+            <tr>
+                <th>Manage</th>
+                <th>Name</th>
+                <th>Unit Type</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="units">
+            <tr *ngFor="let unit of units">
+               <td><a (click)="open(unit)">Manage</a></td>
+               <td>{{unit.name}}</td>
+               <td>{{unit.unitType}}</td>
+               <td>{{unit.status}}</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+<div class="modal fade my-modal" tabindex="-1" role="dialog" #myModal>
+    <div class="modal-dialog">
+      <div class="modal-content"  *ngIf="selectedUnit">
+        <div class="modal-header">
+           <h5 class="modal-title">{{ selectedUnit.name }}</h5>
+           <button type="button" class="close" (click)="close()" aria-label="Close"><span aria-hidden="true">&times;</span>
+           </button>
+        </div>
+        <div class="modal-body">
+          <form class="form">
+            <label class="control-label">Status:</label>
+            <select class="form-control">
+                <option value="A">Active</option>
+                <option value="I">Inactive</option>
+            </select>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary"  (click)="close()" >Save
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>

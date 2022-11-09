@@ -1,0 +1,47 @@
+<section class="container" *ngIf="unit">
+    <img [src]="imgPath" [alt]="altText"/>
+    <dl>
+        <dt>Name:</dt>
+        <dd>{{unit.name}}</dd>
+        <dt>Status:</dt>
+        <dd>{{unit.status}}</dd>
+        <dt>Quantity</dt>
+        <dd>{{unit.qty}}</dd>
+    </dl>
+
+    <div>
+        <button class="btn btn-success" (click)="open()">Deploy Units</button> &nbsp;
+        <a class="btn btn-success" [routerLink]="['/return-units',unit.id]">Return Units</a> &nbsp;
+    </div>
+</section>
+
+<div class="modal fade my-modal" tabindex="-1" role="dialog" #myModal>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Title</h5>
+                <button type="button" class="close" (click)="close()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form class="form" #deployForm="ngForm">
+                    <label class="control-label">Select Country:</label>
+                    <select class="form-control" id="country" name="country">
+                        <option *ngFor="let country of countries">{{country.name}}</option>
+                    </select>
+                    <div class="form-check form-check-inline" *ngIf="unit">
+                        <label class="control-label" for="qty">Quantity</label>
+                        <input class="form-check-input" type="radio" name="qty" id="qty" ngModel>All
+                        <input class="form-check-input" type="radio" name="qty" id="qty">
+                        <div class="col-6">
+                            <input class="form-control" type="number" name="qtyVal" [min]="0" [max]="max" />
+                        </div>
+                    </div>
+                    {{deployForm.value | json}}
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="close()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

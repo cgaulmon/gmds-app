@@ -1,0 +1,18 @@
+<section class="container">
+    <table class="table" aria-describedby="Manage Country Status" id="tblManageCountries">
+        <thead>
+            <tr>
+                <th>Manage</th>
+                <th>Name</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="countries">
+            <tr *ngFor="let country of countries">
+               <td><a [routerLink]="['/country-details/',country.id]">Manage</a></td>
+               <td>{{country.name}}</td>
+               <td>{{country.status}}</td>
+            </tr>
+        </tbody>
+    </table>
+</section>

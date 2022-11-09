@@ -1,0 +1,39 @@
+<section class="container">
+    <h2>Reserve Troop Units</h2>
+    <table class="table" aria-describedby="List of reserve troop units" id="tblTroops">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Unit</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="model">
+            <tr *ngFor="let unit of model.troops">
+                <td><a [routerLink]="['/unit-details',unit.unitId]">{{unit.name}}</a></td>
+                <td>{{unit.status}}</td>
+                <td>{{unit.qty}}</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<section class="container">
+    <h2>Reserve Equipment Units</h2>
+    <table class="table" aria-describedby="List of reserve equipment units" id="tblEquipment">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Unit</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="model">
+            <tr *ngFor="let unit of model.equipment">
+                <td><a [routerLink]="['/unit-details',unit.unitId]">{{unit.name}}</a></td>
+                <td>{{unit.status}}</td>
+                <td>{{unit.qty}}</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
